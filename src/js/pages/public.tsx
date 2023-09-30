@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 
 import Scoreboard from "../components/Scoreboard"
 import {Data} from "../types"
-import validateData from "../utils"
+import {validateData} from "../utils"
 import {LOCAL_STORAGE_KEY} from "./backend"
 
 const DEFAULT_STATE = {teams: []}

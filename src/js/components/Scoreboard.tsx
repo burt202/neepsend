@@ -9,9 +9,9 @@ function orderTeams(teams: Array<Team>) {
   return sortBy(
     (t) => t.total,
     teams.map((t) => {
-      const r1 = sum(t.round1Scores ?? [])
-      const r2 = sum(t.round2Scores ?? [])
-      const r3 = sum(t.round3Scores ?? [])
+      const r1 = sum(t.round1Scores.darts ?? [])
+      const r2 = sum(t.round2Scores.darts ?? [])
+      const r3 = sum(t.round3Scores.darts ?? [])
 
       return {
         name: t.name,

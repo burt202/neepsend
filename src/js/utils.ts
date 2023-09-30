@@ -1,6 +1,6 @@
 import {dataSchema} from "./types"
 
-export default function validateData(state: string) {
+export function validateData(state: string) {
   try {
     const res = dataSchema.safeParse(JSON.parse(state))
     if (res.success) {

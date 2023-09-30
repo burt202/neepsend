@@ -1,24 +1,20 @@
+import {adjust} from "ramda"
 import * as React from "react"
 import {useState} from "react"
 
-import Row from "../components/Row"
+import TeamEntry from "../components/TeamEntry"
+import {Team} from "../types"
 
 export const LOCAL_STORAGE_KEY = "data"
 
-export interface Team {
-  name: string
-  round1Total: {total?: number; darts: Array<number>}
-  round2Total: {total?: number; darts: Array<number>}
-  round3Total: {total?: number; darts: Array<number>}
-}
-
-const EMPTY_STATE = {
+const EMPTY_STATE: Team = {
   name: "",
-  round1Total: {total: undefined, darts: []},
-  round2Total: {total: undefined, darts: []},
-  round3Total: {total: undefined, darts: []},
+  round1Scores: {total: undefined, darts: []},
+  round2Scores: {total: undefined, darts: []},
+  round3Scores: {total: undefined, darts: []},
 }
 
+// TODO
 // prepopulate from local storage
 // delete team
 // select team
@@ -30,7 +26,21 @@ export default function Backend() {
     <>
       <div className="py-4">
         {teams.map((t, i) => {
-          return <Row key={i} name={t.name} />
+          return (
+            <TeamEntry
+              key={i}
+              team={t}
+              onUpdate={(team) => {
+                const updated = adjust(i, () => team, teams)
+                setTeams(updated)
+
+                localStorage.setItem(
+                  LOCAL_STORAGE_KEY,
+                  JSON.stringify({teams: updated}),
+                )
+              }}
+            />
+          )
         })}
 
         <div className="py-4">

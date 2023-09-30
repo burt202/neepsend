@@ -2,9 +2,18 @@ import {z} from "zod"
 
 export const teamSchema = z.object({
   name: z.string(),
-  round1Scores: z.array(z.number()).optional(),
-  round2Scores: z.array(z.number()).optional(),
-  round3Scores: z.array(z.number()).optional(),
+  round1Scores: z.object({
+    total: z.number().optional(),
+    darts: z.array(z.number()),
+  }),
+  round2Scores: z.object({
+    total: z.number().optional(),
+    darts: z.array(z.number()),
+  }),
+  round3Scores: z.object({
+    total: z.number().optional(),
+    darts: z.array(z.number()),
+  }),
 })
 
 export const dataSchema = z.object({
