@@ -11,6 +11,29 @@
       http-equiv="last-updated"
       content="<%= new Date(lastUpdated).toISOString() %>"
     />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        height: 100%;
+      }
+
+      #container {
+        width: 900px;
+        margin: 0 auto 0 auto;
+        min-height: 100%;
+      }
+    </style>
     <% if (production) { %>
     <link rel="stylesheet" href="bundle.css" />
     <% } %>

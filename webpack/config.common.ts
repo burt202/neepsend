@@ -1,4 +1,5 @@
 /* eslint-disable-next-line import/namespace */
+import * as CopyWebpackPlugin from "copy-webpack-plugin"
 import * as path from "path"
 import * as webpack from "webpack"
 
@@ -24,6 +25,9 @@ const config: webpack.Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{from: "src/images/logo.png", to: "logo.png"}],
+    }),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
     }),

@@ -18,7 +18,11 @@ export default merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: [{loader: MiniCssExtractPlugin.loader}, {loader: "css-loader"}],
+        use: [
+          {loader: MiniCssExtractPlugin.loader},
+          {loader: "css-loader"},
+          {loader: "postcss-loader"},
+        ],
       },
     ],
   },

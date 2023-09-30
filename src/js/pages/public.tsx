@@ -34,7 +34,10 @@ export default function Public() {
 
   return (
     <div>
-      <Scoreboard teams={data} />
+      <div className="text-center">
+        <img src="/logo.png" className="h-[150px]" />
+      </div>
+      <Scoreboard teams={data} selected="BBB" />
     </div>
   )
 }
