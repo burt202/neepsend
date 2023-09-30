@@ -1,86 +1,65 @@
 import * as React from "react"
 import {useState} from "react"
 
-import AddTeam from "../components/AddTeam"
+import Row from "../components/Row"
 
 export const LOCAL_STORAGE_KEY = "data"
 
 export interface Team {
   name: string
-  total: number
-  round1Total: number
-  round2Total: number
-  round3Total: number
+  round1Total: {total?: number; darts: Array<number>}
+  round2Total: {total?: number; darts: Array<number>}
+  round3Total: {total?: number; darts: Array<number>}
 }
 
+const EMPTY_STATE = {
+  name: "",
+  round1Total: {total: undefined, darts: []},
+  round2Total: {total: undefined, darts: []},
+  round3Total: {total: undefined, darts: []},
+}
+
+// prepopulate from local storage
+// delete team
+// select team
+
 export default function Backend() {
-  const [teams, setTeams] = useState<Array<Team>>([])
+  const [teams, setTeams] = useState<Array<Team>>([EMPTY_STATE])
 
   return (
     <>
-      <div>
-        <button
-          onClick={() => {
-            localStorage.setItem(
-              LOCAL_STORAGE_KEY,
-              JSON.stringify({
-                teams: [
-                  {name: "AAA", round1Scores: [12]},
-                  {name: "BBB", round1Scores: [4]},
-                  {name: "CCC", round1Scores: [6]},
-                  {name: "DDD", round1Scores: [6]},
-                ],
-              }),
-            )
-          }}
-        >
-          Populate
-        </button>
-        <button
-          onClick={() => {
-            localStorage.setItem(LOCAL_STORAGE_KEY, "")
-          }}
-        >
-          Reset
-        </button>
-        <table>
-          {teams.map((t) => {
-            return (
-              <tr key={t.name}>
-                <td>{t.name}</td>
-                <td>
-                  {t.round1Total} ({Math.floor(t.round1Total / 10)})
-                </td>
-                <td>
-                  {t.round2Total} ({Math.floor(t.round2Total / 10)})
-                </td>
-                <td>
-                  {t.round3Total} ({Math.floor(t.round3Total / 10)})
-                </td>
-              </tr>
-            )
-          })}
-        </table>
-        <AddTeam
-          onAdd={(newTeam) => {
-            const a = [
-              ...teams,
-              {
-                name: newTeam.name,
-                total:
-                  newTeam.round1Total +
-                  newTeam.round2Total +
-                  newTeam.round3Total,
-                round1Total: newTeam.round1Total,
-                round2Total: newTeam.round2Total,
-                round3Total: newTeam.round3Total,
-              },
-            ]
-            setTeams(a)
+      <div className="py-4">
+        {teams.map((t, i) => {
+          return <Row key={i} name={t.name} />
+        })}
 
-            localStorage.setItem("teams", JSON.stringify(a))
-          }}
-        />
+        <div className="py-4">
+          <button
+            className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0"
+            style={{
+              background: "#0C5039",
+              color: "#DEAA16",
+            }}
+            onClick={() => {
+              setTeams([...teams, EMPTY_STATE])
+            }}
+          >
+            Add
+          </button>
+        </div>
+
+        <div className="absolute right-0 bottom-0 p-4 cursor-pointer text-blue-500">
+          <a
+            onClick={() => {
+              if (confirm("Are you sure?") == true) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, "")
+                setTeams([EMPTY_STATE])
+              }
+            }}
+          >
+            Reset
+          </a>
+        </div>
       </div>
     </>
   )
