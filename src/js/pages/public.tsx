@@ -1,6 +1,7 @@
 import * as React from "react"
 import {useState, useEffect} from "react"
 
+import Scoreboard from "../components/Scoreboard"
 import {Team} from "./backend"
 
 const getState = (state: string) => {
@@ -22,19 +23,18 @@ export default function Public() {
   })
 
   const foo = getState(state)
+  console.log("foo", foo)
+
+  const data = [
+    {name: "AAA", round1Scores: [12]},
+    {name: "BBB", round1Scores: [4]},
+    {name: "CCC", round1Scores: [6]},
+    {name: "DDD", round1Scores: [6]},
+  ]
 
   return (
     <div>
-      <table>
-        {foo.map((t) => {
-          return (
-            <tr key={t.name}>
-              <td>{t.name}</td>
-              <td>{t.total}</td>
-            </tr>
-          )
-        })}
-      </table>
+      <Scoreboard teams={data} />
     </div>
   )
 }
