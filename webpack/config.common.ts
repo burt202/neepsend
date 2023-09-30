@@ -26,7 +26,10 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{from: "src/images/logo.png", to: "logo.png"}],
+      patterns: [
+        {from: "src/images/logo.png", to: "logo.png"},
+        {from: "src/images/settings.svg", to: "settings.svg"},
+      ],
     }),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),

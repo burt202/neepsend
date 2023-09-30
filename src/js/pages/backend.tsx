@@ -3,6 +3,8 @@ import {useState} from "react"
 
 import AddTeam from "../components/AddTeam"
 
+export const LOCAL_STORAGE_KEY = "data"
+
 export interface Team {
   name: string
   total: number
@@ -17,6 +19,30 @@ export default function Backend() {
   return (
     <>
       <div>
+        <button
+          onClick={() => {
+            localStorage.setItem(
+              LOCAL_STORAGE_KEY,
+              JSON.stringify({
+                teams: [
+                  {name: "AAA", round1Scores: [12]},
+                  {name: "BBB", round1Scores: [4]},
+                  {name: "CCC", round1Scores: [6]},
+                  {name: "DDD", round1Scores: [6]},
+                ],
+              }),
+            )
+          }}
+        >
+          Populate
+        </button>
+        <button
+          onClick={() => {
+            localStorage.setItem(LOCAL_STORAGE_KEY, "")
+          }}
+        >
+          Reset
+        </button>
         <table>
           {teams.map((t) => {
             return (

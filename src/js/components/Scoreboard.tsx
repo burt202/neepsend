@@ -1,17 +1,9 @@
 import {sortBy, sum} from "ramda"
 import * as React from "react"
 
-interface Team {
-  name: string
-  round1Scores?: Array<number>
-  round2Scores?: Array<number>
-  round3Scores?: Array<number>
-}
+import {Data, Team} from "../types"
 
-export interface ScoreboardProps {
-  selected?: string
-  teams: Array<Team>
-}
+export type ScoreboardProps = Data
 
 function orderTeams(teams: Array<Team>) {
   return sortBy(
