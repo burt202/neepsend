@@ -17,10 +17,10 @@ const EMPTY_STATE: Team = {
 // TODO
 // prepopulate from local storage
 // delete team (or filter when name is empty)
-// select team
 
 export default function Backend() {
   const [teams, setTeams] = useState<Array<Team>>([EMPTY_STATE])
+  const [selected, setSelected] = useState<string | undefined>(undefined)
 
   return (
     <>
@@ -30,13 +30,23 @@ export default function Backend() {
             <TeamEntry
               key={i}
               team={t}
+              selected={selected}
+              onSelectedToggle={() => {
+                const newValue = selected === t.name ? undefined : t.name
+                setSelected(newValue)
+
+                localStorage.setItem(
+                  LOCAL_STORAGE_KEY,
+                  JSON.stringify({teams, selected: newValue}),
+                )
+              }}
               onUpdate={(team) => {
                 const updated = adjust(i, () => team, teams)
                 setTeams(updated)
 
                 localStorage.setItem(
                   LOCAL_STORAGE_KEY,
-                  JSON.stringify({teams: updated}),
+                  JSON.stringify({teams: updated, selected}),
                 )
               }}
             />

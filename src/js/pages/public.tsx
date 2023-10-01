@@ -22,7 +22,7 @@ export default function Public() {
       } else {
         setState(DEFAULT_STATE)
       }
-    }, 5000)
+    }, 2500)
   })
 
   return (
