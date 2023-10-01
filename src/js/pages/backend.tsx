@@ -76,7 +76,10 @@ export default function Backend() {
           <a
             onClick={() => {
               if (confirm("Are you sure?") == true) {
-                localStorage.setItem(LOCAL_STORAGE_KEY, "")
+                localStorage.setItem(
+                  LOCAL_STORAGE_KEY,
+                  JSON.stringify({teams: [EMPTY_STATE]}),
+                )
                 setTeams([EMPTY_STATE])
               }
             }}

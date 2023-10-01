@@ -27,14 +27,14 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
         type="number"
         className="p-2 w-[75px] h-[35px]"
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const total = max(
+          const value = max(
             e.target.value === "" ? 0 : parseInt(e.target.value, 10),
             0,
           )
 
           onUpdate({
-            total,
-            darts: Array.from(Array(calculateNoOfDarts(total) ?? 0)).map(() => {
+            total: value,
+            darts: Array.from(Array(calculateNoOfDarts(value) ?? 0)).map(() => {
               return 0
             }),
           })
