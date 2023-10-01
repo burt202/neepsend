@@ -24,7 +24,7 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
       </span>
       <input
         value={total ?? ""}
-        type="number"
+        maxLength={3}
         className="p-2 w-[75px] h-[35px]"
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = max(
@@ -49,7 +49,7 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
             <input
               key={i}
               value={darts[i]}
-              type="number"
+              maxLength={3}
               className="p-2 w-[75px]"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 const value = max(
