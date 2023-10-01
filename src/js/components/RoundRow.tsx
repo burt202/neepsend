@@ -1,10 +1,11 @@
+import {adjust} from "ramda"
 import * as React from "react"
 import {ChangeEvent} from "react"
 
 interface RoundRowProps {
   text: string
-  total?: number
-  onUpdate: ({total}: {total: number}) => void
+  scores: {total?: number; darts: Array<number>}
+  onUpdate: ({total, darts}: {total?: number; darts: Array<number>}) => void
 }
 
 function calculateNoOfDarts(total?: number) {
@@ -12,7 +13,8 @@ function calculateNoOfDarts(total?: number) {
   return Math.floor(total / 10)
 }
 
-export default function RoundRow({text, total, onUpdate}: RoundRowProps) {
+export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
+  const {total, darts} = scores
   const noOfDarts = calculateNoOfDarts(total)
 
   return (
@@ -25,8 +27,13 @@ export default function RoundRow({text, total, onUpdate}: RoundRowProps) {
         type="number"
         className="p-2 w-[75px] h-[35px]"
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          const total = parseInt(e.target.value, 10)
+
           onUpdate({
-            total: parseInt(e.target.value, 10),
+            total,
+            darts: Array.from(Array(calculateNoOfDarts(total) ?? 0)).map(() => {
+              return 0
+            }),
           })
         }}
       />
@@ -35,7 +42,20 @@ export default function RoundRow({text, total, onUpdate}: RoundRowProps) {
       </span>
       <div className="grid gap-2 grid-cols-8">
         {Array.from(Array(noOfDarts ?? 0)).map((_, i) => {
-          return <input key={i} type="number" className="p-2 w-[75px]" />
+          return (
+            <input
+              key={i}
+              value={darts[i]}
+              type="number"
+              className="p-2 w-[75px]"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                onUpdate({
+                  total,
+                  darts: adjust(i, () => parseInt(e.target.value, 10), darts),
+                })
+              }}
+            />
+          )
         })}
       </div>
     </div>

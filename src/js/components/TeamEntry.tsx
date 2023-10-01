@@ -24,31 +24,31 @@ export default function TeamEntry({team, onUpdate}: TeamEntryProps) {
       />
       <RoundRow
         text="R1"
-        total={round1Scores.total}
-        onUpdate={({total}) => {
+        scores={round1Scores}
+        onUpdate={({total, darts}) => {
           onUpdate({
             ...team,
-            round1Scores: {total, darts: []},
+            round1Scores: {total, darts},
           })
         }}
       />
       <RoundRow
         text="R2"
-        total={round2Scores.total}
-        onUpdate={({total}) => {
+        scores={round2Scores}
+        onUpdate={({total, darts}) => {
           onUpdate({
             ...team,
-            round2Scores: {total, darts: []},
+            round2Scores: {total, darts},
           })
         }}
       />
       <RoundRow
         text="R3"
-        total={round3Scores.total}
-        onUpdate={({total}) => {
+        scores={round3Scores}
+        onUpdate={({total, darts}) => {
           onUpdate({
             ...team,
-            round3Scores: {total, darts: []},
+            round3Scores: {total, darts},
           })
         }}
       />
