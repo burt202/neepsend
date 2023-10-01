@@ -22,7 +22,7 @@ function orderTeams(teams: Array<Team>) {
 }
 
 export default function Scoreboard({selected, teams}: ScoreboardProps) {
-  const ordered = orderTeams(teams)
+  const ordered = orderTeams(teams).filter((t) => t.name !== "")
 
   const firstPlaceTotal = ordered[0]?.total ?? 0
   const thirdPlaceTotal = ordered[2]?.total ?? 0

@@ -16,7 +16,6 @@ const EMPTY_STATE: Team = {
 
 // TODO
 // prepopulate from local storage
-// delete team (or filter when name is empty)
 
 export default function Backend() {
   const [teams, setTeams] = useState<Array<Team>>([EMPTY_STATE])
