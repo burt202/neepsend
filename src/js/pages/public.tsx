@@ -13,7 +13,7 @@ export default function Public() {
   const [state, setState] = useState<Data>(DEFAULT_STATE)
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       const dataString = localStorage.getItem(LOCAL_STORAGE_KEY) ?? ""
       const data = validateData(dataString)
 
@@ -22,8 +22,9 @@ export default function Public() {
       } else {
         setState(DEFAULT_STATE)
       }
-    }, 2500)
-  })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div>

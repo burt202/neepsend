@@ -68,7 +68,7 @@ export default function Backend() {
               setTeams([...teams, EMPTY_STATE])
             }}
           >
-            Add
+            Add Team
           </button>
         </div>
 
