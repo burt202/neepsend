@@ -15,16 +15,16 @@ const EMPTY_STATE: Team = {
   round3Scores: {total: undefined, darts: []},
 }
 
-function getDefaultData() {
+export default function Backend() {
   const dataString = localStorage.getItem(LOCAL_STORAGE_KEY) ?? ""
   const data = validateData(dataString)
 
-  return data ? data.teams : [EMPTY_STATE]
-}
-
-export default function Backend() {
-  const [teams, setTeams] = useState<Array<Team>>(getDefaultData())
-  const [selected, setSelected] = useState<string | undefined>(undefined)
+  const [teams, setTeams] = useState<Array<Team>>(
+    data ? data.teams : [EMPTY_STATE],
+  )
+  const [selected, setSelected] = useState<string | undefined>(
+    data ? data.selected : undefined,
+  )
 
   return (
     <>
