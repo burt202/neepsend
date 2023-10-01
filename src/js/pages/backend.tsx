@@ -4,6 +4,7 @@ import {useState} from "react"
 
 import TeamEntry from "../components/TeamEntry"
 import {Team} from "../types"
+import {validateData} from "../utils"
 
 export const LOCAL_STORAGE_KEY = "data"
 
@@ -14,11 +15,15 @@ const EMPTY_STATE: Team = {
   round3Scores: {total: undefined, darts: []},
 }
 
-// TODO
-// prepopulate from local storage
+function getDefaultData() {
+  const dataString = localStorage.getItem(LOCAL_STORAGE_KEY) ?? ""
+  const data = validateData(dataString)
+
+  return data ? data.teams : [EMPTY_STATE]
+}
 
 export default function Backend() {
-  const [teams, setTeams] = useState<Array<Team>>([EMPTY_STATE])
+  const [teams, setTeams] = useState<Array<Team>>(getDefaultData())
   const [selected, setSelected] = useState<string | undefined>(undefined)
 
   return (
