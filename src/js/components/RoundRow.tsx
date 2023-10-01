@@ -1,4 +1,4 @@
-import {adjust} from "ramda"
+import {adjust, max} from "ramda"
 import * as React from "react"
 import {ChangeEvent} from "react"
 
@@ -27,7 +27,10 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
         type="number"
         className="p-2 w-[75px] h-[35px]"
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const total = parseInt(e.target.value, 10)
+          const total = max(
+            e.target.value === "" ? 0 : parseInt(e.target.value, 10),
+            0,
+          )
 
           onUpdate({
             total,
@@ -49,9 +52,14 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
               type="number"
               className="p-2 w-[75px]"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                const value = max(
+                  e.target.value === "" ? 0 : parseInt(e.target.value, 10),
+                  0,
+                )
+
                 onUpdate({
                   total,
-                  darts: adjust(i, () => parseInt(e.target.value, 10), darts),
+                  darts: adjust(i, () => value, darts),
                 })
               }}
             />

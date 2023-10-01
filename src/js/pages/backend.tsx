@@ -16,7 +16,7 @@ const EMPTY_STATE: Team = {
 
 // TODO
 // prepopulate from local storage
-// delete team
+// delete team (or filter when name is empty)
 // select team
 
 export default function Backend() {
