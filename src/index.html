@@ -29,9 +29,17 @@
       }
 
       #container {
-        width: 900px;
-        margin: 0 auto 0 auto;
+        padding: 0 16px;
+        width: 100%;
         min-height: 100%;
+      }
+
+      @media only screen and (min-width: 960px) {
+        #container {
+          padding: 0;
+          width: 930px;
+          margin: 0 auto 0 auto;
+        }
       }
     </style>
     <% if (production) { %>

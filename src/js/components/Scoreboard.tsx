@@ -28,21 +28,21 @@ export default function Scoreboard({selected, teams}: ScoreboardProps) {
   const thirdPlaceTotal = ordered[2]?.total ?? 0
 
   return (
-    <table className="border-separate border-spacing-y-2 border-spacing-x-0">
+    <table className="border-separate border-spacing-y-2 border-spacing-x-0 w-full">
       <thead>
         <tr>
-          <td className="w-[510px] p-4 uppercase font-bold tracking-widest">
+          <th className="p-4 uppercase font-bold tracking-widest text-left">
             Team
-          </td>
-          <td className="w-[130px] p-4 uppercase font-bold tracking-widest text-center">
+          </th>
+          <th className="w-[125px] p-4 uppercase font-bold tracking-widest text-center">
             Total
-          </td>
-          <td className="w-[130px] p-4 uppercase font-bold tracking-widest text-center">
+          </th>
+          <th className="w-[125px] p-4 uppercase font-bold tracking-widest text-center">
             To go 1st
-          </td>
-          <td className="w-[130px] p-4 uppercase font-bold tracking-widest text-center">
+          </th>
+          <th className="w-[125px] p-4 uppercase font-bold tracking-widest text-center">
             To go 3rd
-          </td>
+          </th>
         </tr>
       </thead>
       <tbody>
