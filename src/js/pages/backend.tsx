@@ -26,6 +26,10 @@ export default function Backend() {
     data ? data.selected : undefined,
   )
 
+  const teamNames = teams.map((t) => t.name)
+  const unique = [...new Set(teamNames)]
+  const duplicateNamesPresent = teamNames.length !== unique.length
+
   return (
     <>
       <div className="py-4">
@@ -59,10 +63,21 @@ export default function Backend() {
           )
         })}
 
+        {duplicateNamesPresent && (
+          <p className="font-bold text-red-400">Duplicate names present!</p>
+        )}
+
         <div className="py-4">
           <button
             className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0 text-[#DEAA16] bg-emerald-950"
             onClick={() => {
+              const teamsWithBlankName = teams.filter(
+                (t) => t.name.length === 0,
+              )
+
+              if (teamsWithBlankName.length === 1) return
+              if (duplicateNamesPresent) return
+
               setTeams([...teams, EMPTY_STATE])
             }}
           >
