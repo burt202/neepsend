@@ -19,7 +19,7 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
 
   return (
     <div className="mt-4 flex">
-      <span className="uppercase font-bold tracking-widest w-[32px] inline-block h-[35px] leading-[35px]">
+      <span className="uppercase font-bold text-white tracking-widest w-[32px] inline-block h-[35px] leading-[35px]">
         {text}
       </span>
       <input
@@ -40,7 +40,7 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
           })
         }}
       />
-      <span className="uppercase font-bold tracking-widest  w-[100px] inline-block text-center  h-[35px] leading-[35px]">
+      <span className="uppercase font-bold tracking-widest text-white w-[100px] inline-block text-center  h-[35px] leading-[35px]">
         = {noOfDarts ?? "?"} darts
       </span>
       <div className="grid gap-2 grid-cols-8">

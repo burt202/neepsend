@@ -28,6 +28,7 @@ export default function TeamEntry({
           src="dartboard.svg"
           className="h-[24px] cursor-pointer mr-2"
           onClick={onSelectedToggle}
+          title="Toggle Highlight"
         />
         <input
           placeholder="Team name"

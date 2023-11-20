@@ -36,6 +36,8 @@ export default function Backend() {
               team={t}
               selected={selected}
               onSelectedToggle={() => {
+                if (t.name.length === 0) return
+
                 const newValue = selected === t.name ? undefined : t.name
                 setSelected(newValue)
 
@@ -59,11 +61,7 @@ export default function Backend() {
 
         <div className="py-4">
           <button
-            className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0"
-            style={{
-              background: "#0C5039",
-              color: "#DEAA16",
-            }}
+            className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0 text-[#DEAA16] bg-emerald-950"
             onClick={() => {
               setTeams([...teams, EMPTY_STATE])
             }}
@@ -72,7 +70,7 @@ export default function Backend() {
           </button>
         </div>
 
-        <div className="absolute right-0 bottom-0 p-4 cursor-pointer text-blue-500">
+        <div className="fixed right-0 bottom-0 p-4 cursor-pointer text-[#DEAA16]">
           <a
             onClick={() => {
               if (confirm("Are you sure?") == true) {
