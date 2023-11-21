@@ -32,7 +32,10 @@ export default function Backend() {
 
   return (
     <>
-      <div className="py-4">
+      <div>
+        <p className="font-bold text-white text-lg">
+          {teams.length} Team{teams.length === 1 ? "" : "s"}
+        </p>
         {teams.map((t, i) => {
           return (
             <TeamEntry
