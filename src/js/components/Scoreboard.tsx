@@ -22,6 +22,10 @@ function orderTeams(teams: Array<Team>) {
 }
 
 export default function Scoreboard({selected, teams}: ScoreboardProps) {
+  const teamNames = teams.map((t) => t.name)
+  const unique = [...new Set(teamNames)]
+  const duplicateNamesPresent = teamNames.length !== unique.length
+
   const ordered = orderTeams(teams).filter((t) => t.name !== "")
 
   const firstPlaceTotal = ordered[0]?.total ?? 0
@@ -49,7 +53,13 @@ export default function Scoreboard({selected, teams}: ScoreboardProps) {
         </tr>
       </thead>
       <tbody>
-        {ordered.length ? (
+        {duplicateNamesPresent ? (
+          <tr className="bg-gray-500">
+            <td colSpan={5} className="p-4 text-center text-slate-100">
+              Duplicate team names present
+            </td>
+          </tr>
+        ) : ordered.length ? (
           ordered.map((t, i) => {
             const bg = selected === t.name ? "bg-amber-300" : "bg-gray-500"
             const textColor =

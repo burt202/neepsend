@@ -67,7 +67,9 @@ export default function Backend() {
         })}
 
         {duplicateNamesPresent && (
-          <p className="font-bold text-red-400">Duplicate names present!</p>
+          <p className="font-bold text-red-400">
+            Duplicate team names present!
+          </p>
         )}
 
         <div className="py-4">
