@@ -29,7 +29,7 @@ export default function Public() {
   return (
     <div>
       <div className="text-center">
-        <img src="logo.png" className="h-[150px]" />
+        <img src="logo-new.png" className="h-[100px]" />
       </div>
 
       <Scoreboard {...state} />

@@ -28,6 +28,7 @@ const config: webpack.Configuration = {
     new CopyWebpackPlugin({
       patterns: [
         {from: "src/images/logo.png", to: "logo.png"},
+        {from: "src/images/logo-new.png", to: "logo-new.png"},
         {from: "src/images/settings.svg", to: "settings.svg"},
         {from: "src/images/dartboard.svg", to: "dartboard.svg"},
       ],
