@@ -1,4 +1,4 @@
-import {adjust, max} from "ramda"
+import {adjust, max, sum} from "ramda"
 import * as React from "react"
 import {ChangeEvent} from "react"
 
@@ -16,6 +16,7 @@ function calculateNoOfDarts(total?: number) {
 export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
   const {total, darts} = scores
   const noOfDarts = calculateNoOfDarts(total)
+  const sumOfDartsScores = sum(darts)
 
   return (
     <div className="mt-1 flex">
@@ -65,6 +66,11 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
             />
           )
         })}
+        {noOfDarts && (
+          <span className="uppercase font-bold tracking-widest text-white h-[30px] leading-[30px]">
+            ({sumOfDartsScores})
+          </span>
+        )}
       </div>
     </div>
   )
