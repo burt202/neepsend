@@ -30,7 +30,7 @@ export default function Public() {
   return (
     <div className="px-4 w-full min-h-full min-[960px]:w-[930px] min-[960px]:p-0 min-[960px]:my-0 min-[960px]:mx-auto">
       <div className="text-center">
-        <img src="logo-new.png" className="h-[100px]" />
+        <img src="logo-new.png" className="h-[110px]" />
       </div>
 
       <Scoreboard {...state} />
