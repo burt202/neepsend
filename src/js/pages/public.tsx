@@ -1,3 +1,4 @@
+import {Settings} from "lucide-react"
 import * as React from "react"
 import {useState, useEffect} from "react"
 import {Link} from "react-router-dom"
@@ -36,7 +37,9 @@ export default function Public() {
 
       <div className="absolute right-0 bottom-0 p-4">
         <Link to="/backend" target="_blank">
-          <img src="settings.svg" className="h-[24px]" />
+          <span className="text-white" title="Backend">
+            <Settings size={32} />
+          </span>
         </Link>
       </div>
     </div>

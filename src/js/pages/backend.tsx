@@ -71,7 +71,7 @@ export default function Backend() {
 
         <div className="mb-2">
           <button
-            className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0 text-[#DEAA16] bg-emerald-950"
+            className="rounded-lg font-bold cursor-pointer px-4 py-2 text-lg border-0 text-[#DEAA16] bg-emerald-950 uppercase tracking-widest"
             onClick={() => {
               const teamsWithBlankName = teams.filter(
                 (t) => t.name.length === 0,
@@ -87,7 +87,7 @@ export default function Backend() {
           </button>
         </div>
 
-        <div className="fixed right-0 bottom-0 p-2 cursor-pointer text-[#DEAA16]">
+        <div className="fixed right-0 bottom-0 p-4 cursor-pointer text-[#DEAA16] uppercase font-bold tracking-widest">
           <a
             onClick={() => {
               if (confirm("Are you sure?") == true) {

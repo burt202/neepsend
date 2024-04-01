@@ -1,3 +1,4 @@
+import {Goal} from "lucide-react"
 import * as React from "react"
 import {ChangeEvent} from "react"
 
@@ -24,12 +25,13 @@ export default function TeamEntry({
   return (
     <div className="my-2 pb-2 border-solid border-0 border-b-2 border-gray-300">
       <div className="flex items-center">
-        <img
-          src="dartboard.svg"
-          className="h-[24px] cursor-pointer mr-2"
-          onClick={onSelectedToggle}
+        <span
+          className="text-white cursor-pointer mr-2"
           title="Toggle Highlight"
-        />
+          onClick={onSelectedToggle}
+        >
+          <Goal size={24} />
+        </span>
         <input
           placeholder="Team name"
           value={name}
