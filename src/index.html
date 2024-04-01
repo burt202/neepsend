@@ -29,19 +29,18 @@
         background: #0C503A;
       }
 
-      #container {
+      .page {
         padding: 0 16px;
-        width: 100%;
         min-height: 100%;
       }
 
       @media only screen and (min-width: 960px) {
-        #container {
+        .page {
           padding: 0;
-          width: 930px;
           margin: 0 auto 0 auto;
         }
       }
+
     </style>
     <% if (production) { %>
     <link rel="stylesheet" href="bundle.css" />

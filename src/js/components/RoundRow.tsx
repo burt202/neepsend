@@ -44,7 +44,10 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
       <span className="uppercase font-bold tracking-widest text-white w-[100px] inline-block text-center h-[30px] leading-[30px]">
         = {noOfDarts ?? "?"} darts
       </span>
-      <div className="grid gap-1 grid-cols-9">
+      <div
+        className="grid gap-1"
+        style={{gridTemplateColumns: "repeat(13, minmax(0, 1fr))"}}
+      >
         {Array.from(Array(noOfDarts ?? 0)).map((_, i) => {
           return (
             <input

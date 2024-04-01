@@ -28,7 +28,7 @@ export default function Public() {
   }, [])
 
   return (
-    <div>
+    <div className="page w-full min-[960px]:w-[930px]">
       <div className="text-center">
         <img src="logo-new.png" className="h-[100px]" />
       </div>
