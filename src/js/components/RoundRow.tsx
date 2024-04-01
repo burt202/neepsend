@@ -20,7 +20,7 @@ export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
 
   return (
     <div className="mt-1 flex">
-      <span className="uppercase font-bold text-white tracking-widest w-[32px] inline-block h-[30px] leading-[30px]">
+      <span className="uppercase font-bold text-white tracking-widest w-[30px] inline-block h-[30px] leading-[30px] mr-2">
         {text}
       </span>
       <input

@@ -26,6 +26,8 @@ export default function Backend() {
     data ? data.selected : undefined,
   )
 
+  const [expanded, setExpanded] = useState<Array<number>>([])
+
   const teamNames = teams.map((t) => t.name)
   const unique = [...new Set(teamNames)]
   const duplicateNamesPresent = teamNames.length !== unique.length
@@ -49,6 +51,8 @@ export default function Backend() {
                   LOCAL_STORAGE_KEY,
                   JSON.stringify({teams, selected: newValue}),
                 )
+
+                setExpanded([i])
               }}
               onUpdate={(team) => {
                 const updated = adjust(i, () => team, teams)
@@ -59,6 +63,18 @@ export default function Backend() {
                   JSON.stringify({teams: updated, selected}),
                 )
               }}
+              onExpandCollapse={() => {
+                if (expanded.includes(i)) {
+                  setExpanded(
+                    expanded.filter((j) => {
+                      return j !== i
+                    }),
+                  )
+                } else {
+                  setExpanded([...expanded, i])
+                }
+              }}
+              expanded={expanded.includes(i)}
             />
           )
         })}
