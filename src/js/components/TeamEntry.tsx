@@ -22,7 +22,7 @@ export default function TeamEntry({
   const showAsSelected = selected === team.name
 
   return (
-    <div className="mb-4 pb-4 border-solid border-0 border-b-2 border-gray-300">
+    <div className="my-2 pb-2 border-solid border-0 border-b-2 border-gray-300">
       <div className="flex items-center">
         <img
           src="dartboard.svg"
@@ -34,11 +34,10 @@ export default function TeamEntry({
           placeholder="Team name"
           value={name}
           style={{
-            background: showAsSelected ? "#fcd34d" : "white",
+            background: showAsSelected ? "#49aef3" : "white",
             border: "1px solid",
           }}
-          disabled={showAsSelected}
-          className="p-2 w-[450px]"
+          className="p-1 w-[450px] h-[30px]"
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             onUpdate({...team, name: e.target.value})
           }}

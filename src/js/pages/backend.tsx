@@ -33,9 +33,6 @@ export default function Backend() {
   return (
     <>
       <div>
-        <p className="font-bold text-white text-lg">
-          {teams.length} Team{teams.length === 1 ? "" : "s"}
-        </p>
         {teams.map((t, i) => {
           return (
             <TeamEntry
@@ -72,7 +69,7 @@ export default function Backend() {
           </p>
         )}
 
-        <div className="py-4">
+        <div className="mb-2">
           <button
             className="rounded-lg font-bold cursor-pointer px-8 py-2 text-lg border-0 text-[#DEAA16] bg-emerald-950"
             onClick={() => {
@@ -90,7 +87,7 @@ export default function Backend() {
           </button>
         </div>
 
-        <div className="fixed right-0 bottom-0 p-4 cursor-pointer text-[#DEAA16]">
+        <div className="fixed right-0 bottom-0 p-2 cursor-pointer text-[#DEAA16]">
           <a
             onClick={() => {
               if (confirm("Are you sure?") == true) {
