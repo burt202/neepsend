@@ -34,7 +34,7 @@ export default function Backend() {
 
   return (
     <>
-      <div className="page w-full min-[1280px]:w-[1250px]">
+      <div className="px-4 w-full min-h-full min-[1280px]:w-[1250px] min-[1280px]:p-0 min-[1280px]:my-0 min-[1280px]:mx-auto">
         {teams.map((t, i) => {
           return (
             <TeamEntry
