@@ -63,6 +63,7 @@ export default function TeamEntry({
           <RoundRow
             text="R1"
             scores={round1Scores}
+            previous={0}
             onUpdate={({total, darts}) => {
               onUpdate({
                 ...team,
@@ -72,6 +73,7 @@ export default function TeamEntry({
           />
           <RoundRow
             text="R2"
+            previous={round1Scores.total ?? 0}
             scores={round2Scores}
             onUpdate={({total, darts}) => {
               onUpdate({
@@ -82,6 +84,7 @@ export default function TeamEntry({
           />
           <RoundRow
             text="R3"
+            previous={round2Scores.total ?? 0}
             scores={round3Scores}
             onUpdate={({total, darts}) => {
               onUpdate({

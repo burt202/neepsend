@@ -4,18 +4,24 @@ import {ChangeEvent} from "react"
 
 interface RoundRowProps {
   text: string
+  previous: number
   scores: {total?: number; darts: Array<number>}
   onUpdate: ({total, darts}: {total?: number; darts: Array<number>}) => void
 }
 
 function calculateNoOfDarts(total?: number) {
-  if (!total) return null
+  if (!total || total < 0) return null
   return Math.floor(total / 10)
 }
 
-export default function RoundRow({text, scores, onUpdate}: RoundRowProps) {
+export default function RoundRow({
+  text,
+  scores,
+  previous,
+  onUpdate,
+}: RoundRowProps) {
   const {total, darts} = scores
-  const noOfDarts = calculateNoOfDarts(total)
+  const noOfDarts = calculateNoOfDarts((total ?? 0) - previous)
   const sumOfDartsScores = sum(darts)
 
   return (
